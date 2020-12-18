@@ -1,5 +1,6 @@
 package Servlet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,15 @@ public class Login extends HttpServlet {
         String password=req.getParameter("password");
         if(account.equals(acc)&&password.equals(pass)){
             req.setAttribute("pass","true");
-            req.getRequestDispatcher("loginSuccess.jsp");
+            req.setAttribute("user_id","acc");
+            RequestDispatcher rd=req.getRequestDispatcher("loginSuccess.jsp");
+            try {
+                rd.forward(req,resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
