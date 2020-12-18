@@ -26,11 +26,12 @@
             <div class="login">
                 <button onclick="document.getElementById('form').submit();">登录</button>
             </div>
-            <div class="register">
-                <button onclick="window.location.href='register.jsp'">创建新账号</button>
-            </div>
-            <!--  注册按钮    -->
         </form>
+        <div class="register">
+            <button onclick="window.location.href='register.jsp'">创建新账号</button>
+        </div>
+            <!--  注册按钮    -->
+
     </div>
 
 
