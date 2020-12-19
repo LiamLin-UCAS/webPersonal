@@ -27,6 +27,8 @@
                 <input placeholder="请输入账号" name="account">
                 <p class="words">密码</p>
                 <input placeholder="请输入密码" type="password" name="password">
+                <p class="words">姓名</p>
+                <input placeholder="请输入姓名" name="studentName">
                 <p class="words">学号</p>
                 <input placeholder="2019XXXXXXXX" name="studentID">
                 <p class="words">联系方式</p>

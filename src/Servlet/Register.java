@@ -1,6 +1,5 @@
 package Servlet;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +12,15 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String account=req.getParameter("account");
-        System.out.println(account);
         String password=req.getParameter("password");
-        System.out.println(password);
+        String studentName=req.getParameter("studentName");
         String studentID=req.getParameter("studentID");
-        System.out.println(studentID);
         String telephoneNum=req.getParameter("telephoneNumber");
-        System.out.println(telephoneNum);
         String email=req.getParameter("email");
-        System.out.println(email);
+        register(account,password,studentName,studentID,telephoneNum,email);
+    }
+    private static void register(String account,String password,String stuName,String studentID,String teleNum,String email){
+        JDBCdemo jdbc=new JDBCdemo();
+        jdbc.register(account,password,stuName,studentID,teleNum,email);
     }
 }
