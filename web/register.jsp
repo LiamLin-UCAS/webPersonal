@@ -30,25 +30,20 @@
                 <p class="words">学号</p>
                 <input placeholder="2019XXXXXXXX" name="studentID">
                 <p class="words">联系方式</p>
-                <input placeholder="电话号码" type="tel" name="telephone">
+                <input placeholder="电话号码" type="tel" name="telephoneNumber">
                 <p class="words">电子邮箱</p>
                 <input placeholder="youremail@example.com" type="email" name="email">
             </div>
             <!--  登录按钮    -->
             <div class="login">
-                <button onclick="document.getElementById('form').submit();">登录</button>
+                <button onclick="document.getElementById('form').submit();">创建新账号</button>
             </div>
             <div class="register">
-                <button onclick="window.location.href='register.jsp'">创建新账号</button>
+                <button onclick="window.location.href='index.jsp'">返回</button>
             </div>
             <!--  注册按钮    -->
         </form>
     </div>
-
-
-
-
-
 </article>
 </body>
 </html>
