@@ -1,0 +1,41 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    height: 100%;
+}
+article{
+    height: 100%;
+}
+article header{
+    height: 15%;
+    background-color: #466BAF;
+}
+article header *{
+    margin: 0;
+}
+article header h1{
+    text-align: center;
+}
+article article{
+    height: 85%;
+}
+#main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #CC865E;
+}
+#navigator{
+    width: 12%;
+}
+#navigator *{
+    margin: 0;
+    padding: 20px;
+    border: 2px solid black;
+    border-bottom: 0;
+}
+#content{
+    width: 88%;
+}
