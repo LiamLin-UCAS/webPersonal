@@ -5,7 +5,7 @@
   Time: 22:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,17 +20,15 @@
     </header>
     <!--  登录面板    -->
     <div class="panel">
-        <form action="../webPersonal_war_exploded/Register" method="post" id="form">
+        <form action="../webPersonal_war_exploded/Register" method="post" id="form" accept-charset="UTF-8">
             <!--  账号和密码组    -->
             <div class="group">
-                <p class="words">账号</p>
-                <input placeholder="请输入账号" name="account">
+                <p class="words">学号</p>
+                <input placeholder="请输入学号" name="studentID">
                 <p class="words">密码</p>
-                <input placeholder="请输入密码" type="password" name="password">
+                <input placeholder="请设置密码" type="password" name="password">
                 <p class="words">姓名</p>
                 <input placeholder="请输入姓名" name="studentName">
-                <p class="words">学号</p>
-                <input placeholder="2019XXXXXXXX" name="studentID">
                 <p class="words">联系方式</p>
                 <input placeholder="电话号码" type="tel" name="telephoneNumber">
                 <p class="words">电子邮箱</p>

@@ -30,7 +30,7 @@ public class JDBCdemo {
         }
 
     }
-    public static void register(String account,String password,String stuName,String studentID,String teleNum,String email){
+    public static void register(String studentID,String password,String stuName,String teleNum,String email){
         Connection con=null;
         Statement stmt=null;
         ResultSet rs=null;
@@ -40,8 +40,11 @@ public class JDBCdemo {
             String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
             con=DriverManager.getConnection(url,"root","123456");
             stmt=con.createStatement();
-            String sql="insert into stulogin values ('"+account+"','"+password+"','"+stuName+"','"+studentID+"','"+teleNum+"','"+email+"');";
-            stmt.execute(sql);
+            //String sql="insert into stulogin values ('"+studentID+"','"+password+"','"+stuName+"','"+teleNum+"','"+email+"');";
+            String sql="select * from stulogin where stuID='201900140060'";
+            System.out.println(sql);
+            rs=stmt.executeQuery(sql);
+            System.out.println(rs.getString("stuName"));
             close(rs,stmt,con);
         } catch (Exception e) {
             e.printStackTrace();
