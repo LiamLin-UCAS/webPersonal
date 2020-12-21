@@ -24,7 +24,6 @@ public class Register extends HttpServlet {
         rd.forward(req,resp);
     }
     private static void register(String studentID,String password,String stuName,String teleNum,String email){
-        JDBCdemo jdbc=new JDBCdemo();
-        jdbc.register(studentID,password,stuName,teleNum,email);
+        JDBCdemo.register(studentID,password,stuName,teleNum,email);
     }
 }

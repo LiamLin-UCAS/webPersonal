@@ -17,8 +17,8 @@
         <form action="../webPersonal_war_exploded/Login" method="post" id="form">
             <!--  账号和密码组    -->
             <div class="group">
-                <p class="words">账号</p>
-                <input placeholder="请输入账号" name="account">
+                <p class="words">学号</p>
+                <input placeholder="请输入学号" name="studentID">
                 <p class="words">密码</p>
                 <input placeholder="请输入密码" type="password" name="password">
             </div>

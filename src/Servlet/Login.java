@@ -12,14 +12,12 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp){
-        String acc="000";
-        String pass="111";
-        String account=req.getParameter("account");
+        String stuID=req.getParameter("studentID");
         String password=req.getParameter("password");
-        if(account.equals(acc)&&password.equals(pass)){
-            req.setAttribute("pass","true");
-            req.setAttribute("user_id","acc");
-            RequestDispatcher rd=req.getRequestDispatcher("loginSuccess.jsp");
+        if(JDBCdemo.login(stuID,password)){
+            req.setAttribute("stuID",stuID);
+            req.setAttribute("stuName",JDBCdemo.select(stuID));
+            RequestDispatcher rd=req.getRequestDispatcher("mainPerson.jsp");
             try {
                 rd.forward(req,resp);
             } catch (ServletException e) {
