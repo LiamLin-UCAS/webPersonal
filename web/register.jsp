@@ -5,10 +5,11 @@
   Time: 22:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>注册新账号</title>
     <link href="register.css" rel="stylesheet">
 </head>
