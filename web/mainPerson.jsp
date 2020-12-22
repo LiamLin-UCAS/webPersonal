@@ -28,7 +28,7 @@
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(0)" class="headNavi">个人信息</button>
                 <button class="subNavi0" onclick="displayInfo()">学籍信息</button>
-                <button class="subNavi0">修改信息</button>
+                <button class="subNavi0" onclick="displayInfoAjax()">修改信息</button>
             </div>
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(1)" class="headNavi">选课退课</button>

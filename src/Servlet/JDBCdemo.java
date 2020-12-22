@@ -97,6 +97,7 @@ public class JDBCdemo {
         ResultSet rs=null;
         String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection(url,"root","123456");
             stmt=con.createStatement();
             String sql="select * from stulogin where stuID='"+studentID+"';";
@@ -110,6 +111,24 @@ public class JDBCdemo {
             e.printStackTrace();
         }finally {
             close(rs,stmt,con);
+        }
+    }
+    public static boolean changeInfo(String studentID,String newTele,String newEmail){
+        Connection con=null;
+        Statement stmt=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql="update stulogin SET teleNum='"+newTele+"',email='"+newEmail+"' WHERE stuID='"+studentID+"';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            int columns=stmt.executeUpdate(sql);
+            return columns != 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            close(null,stmt,con);
         }
     }
     public static void close(ResultSet rs,Statement stmt,Connection con){

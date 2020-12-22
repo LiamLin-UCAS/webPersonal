@@ -38,29 +38,72 @@ function displayInfo(){
         },
         success:function (e){
             let content=document.getElementById("content");
-
-            let n="<p>学号：</p><input disabled value="+e.stuID+">" +
-                "<p>密码：</p><input disabled type='password' value="+e.password+">" +
-                "<p>姓名：</p><input disabled value="+e.stuName+">" +
-                "<p>电话号码：</p><input type='tel' value="+e.teleNum+">" +
-                "<p>电子邮箱：</p><input type='email' value="+e.email+">";
-
-
-            let x="<table>" +
+            let x="<table style='margin-top: 30px;'>" +
                 "<tr>" +
                 "<td>学号：</td><td><input disabled value="+e.stuID+"></td>" +
                 "<td>密码：</td><td><input disabled type='password' value="+e.password+"></td>" +
                 "</tr>" +
                 "<tr>" +
                 "<td>姓名：</td><td><input disabled value="+e.stuName+"></td>" +
-                "<td>电话号码</td><td><input type='tel' value="+e.teleNum+"></td>" +
+                "<td>电话号码</td><td><input disabled type='tel' value="+e.teleNum+"></td>" +
                 "</tr>" +
                 "<tr>" +
-                "<td>电子邮箱：</td><td><input type='email' value="+e.email+"></td>" +
-                "<td></td><td></td>" +
+                "<td>电子邮箱：</td><td colspan='3'><input disabled type='email' style='width: 400px;' value="+e.email+"></td>" +
                 "</tr>" +
                 "</table>"
             content.innerHTML=x;
+        }
+    });
+}
+
+function displayInfoAjax(){
+    let stuID=document.getElementById("stuID").value;
+    $.ajax({
+        url:"displayInfo",
+        type:"post",
+        data:{
+            stuID:stuID
+        },
+        success:function (e){
+            let content=document.getElementById("content");
+            let x="<table style='margin-top: 30px;'>" +
+                "<tr>" +
+                "<td>学号：</td><td><input id='stuID' disabled value="+e.stuID+"></td>" +
+                "<td>密码：</td><td><input disabled type='password' value="+e.password+"></td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>姓名：</td><td><input disabled value="+e.stuName+"></td>" +
+                "<td>电话号码</td><td><input id='tel' type='tel' value="+e.teleNum+"></td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>电子邮箱：</td><td colspan='3'><input id='email' type='email' style='width: 400px;' value="+e.email+"></td>" +
+                "</tr>" +
+                "</table>" +
+                "<button onclick='changeInfo()'>修改信息</button>"
+            content.innerHTML=x;
+        }
+    });
+}
+
+function changeInfo(){
+    let stuID=document.getElementById("stuID").value;
+    let tel=document.getElementById("tel").value;
+    let email=document.getElementById("email").value;
+    $.ajax({
+        url:"changeInfo",
+        type:"post",
+        data:{
+            stuID:stuID,
+            tel:tel,
+            email:email
+        },
+        success:function (e){
+            if(e.pass==true)
+                alert("修改成功");
+            else
+                alert("修改失败");
+            console.log(e);
+            displayInfoAjax();
         }
     })
 }

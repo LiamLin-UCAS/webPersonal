@@ -77,6 +77,21 @@ article article{
 #content table{
     font-size: 24px;
 }
+#content table tr td input{
+    width: 150px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border: #466BAF solid 1px;
+    border-radius: 5px;
+    height: 35px;
+    font-size: 20px;
+}
+#content table tr td input:hover{
+    border: #466BAF solid 3px;
+}
+#content table tr td input:focus{
+    border: #466BAF solid 3px;
+}
 .subNavi0{
     display: none;
     margin-top: 0;
