@@ -6,6 +6,9 @@ body{
     height: 100%;
     background-image: url("background.jpg");
 }
+button:hover{
+    cursor: pointer;
+}
 article{
     height: 100%;
 }
@@ -70,6 +73,9 @@ article article{
 #content{
     width: 86%;
     background-color: rgba(213,213,213,0.9);
+}
+#content table{
+    font-size: 24px;
 }
 .subNavi0{
     display: none;

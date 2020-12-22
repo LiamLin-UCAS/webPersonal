@@ -1,9 +1,7 @@
 package Servlet;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 import com.mysql.cj.jdbc.Driver;
 
 import javax.servlet.RequestDispatcher;
@@ -52,7 +50,7 @@ public class JDBCdemo {
         }
         return false;
     }
-    public static String select(String studentID){
+    public static String selectName(String studentID){
         Connection con=null;
         Statement stmt=null;
         ResultSet rs=null;
@@ -93,7 +91,28 @@ public class JDBCdemo {
             close(null,stmt,con);
         }
     }
-    private static void close(ResultSet rs,Statement stmt,Connection con){
+    public static void info(String studentID,String [] infoData){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        try {
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            String sql="select * from stulogin where stuID='"+studentID+"';";
+            rs=stmt.executeQuery(sql);
+            if(rs.next()){
+                for(int n=0;n<5;n++){
+                    infoData[n]=rs.getString(n+1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(rs,stmt,con);
+        }
+    }
+    public static void close(ResultSet rs,Statement stmt,Connection con){
         try{
             if(rs!=null){
                 rs.close();

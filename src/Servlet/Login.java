@@ -16,7 +16,7 @@ public class Login extends HttpServlet {
         String password=req.getParameter("password");
         if(JDBCdemo.login(stuID,password)){
             req.setAttribute("stuID",stuID);
-            req.setAttribute("stuName",JDBCdemo.select(stuID));
+            req.setAttribute("stuName",JDBCdemo.selectName(stuID));
             RequestDispatcher rd=req.getRequestDispatcher("mainPerson.jsp");
             try {
                 rd.forward(req,resp);

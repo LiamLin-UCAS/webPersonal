@@ -19,6 +19,7 @@
         <div>
             <img src="logo.png" style="width: 60%;"/>
             <p>你好！ <i><%=request.getAttribute("stuName")%></i>  <%=request.getAttribute("stuID")%></p>
+            <input id="stuID" type="hidden" value="<%=request.getAttribute("stuID")%>">
         </div>
         <h1>学生信息管理系统</h1>
     </header>
@@ -26,7 +27,7 @@
         <div class="naviContent">
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(0)" class="headNavi">个人信息</button>
-                <button class="subNavi0">学籍信息</button>
+                <button class="subNavi0" onclick="displayInfo()">学籍信息</button>
                 <button class="subNavi0">修改信息</button>
             </div>
             <div class="navigator">
@@ -41,9 +42,7 @@
             </div>
         </div>
 
-        <div id="content">
-            <p>content</p>
-        </div>
+        <div id="content" align="center"></div>
     </article>
 </article>
 <script src="js/mainPerson.js"></script>
