@@ -17,10 +17,18 @@
         <form action="../webPersonal_war_exploded/Login" method="post" id="form">
             <!--  账号和密码组    -->
             <div class="group">
+                <%!
+                String studentID;
+                String password;
+                %>
+                <%
+                    studentID=(String)request.getAttribute("studentID");
+                    password=(String) request.getAttribute("password");
+                %>
                 <p class="words">学号</p>
-                <input placeholder="请输入学号" name="studentID">
+                <input placeholder="请输入学号" name="studentID" value="<%=(studentID!=null)?studentID:""%>">
                 <p class="words">密码</p>
-                <input placeholder="请输入密码" type="password" name="password">
+                <input placeholder="请设置密码" type="password" name="password" value="<%=(password!=null)?password:""%>">
             </div>
             <!--  登录按钮    -->
             <div class="login">

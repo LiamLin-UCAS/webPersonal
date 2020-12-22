@@ -18,9 +18,13 @@ public class Register extends HttpServlet {
         String studentName=req.getParameter("studentName");
         String telephoneNum=req.getParameter("telephoneNumber");
         String email=req.getParameter("email");
+
         register(studentID,password,studentName,telephoneNum,email);
-        req.setAttribute("test",studentName);
-        RequestDispatcher rd=req.getRequestDispatcher("test.jsp");
+
+        req.setAttribute("studentID",studentID);
+        req.setAttribute("password",password);
+
+        RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
         rd.forward(req,resp);
     }
     private static void register(String studentID,String password,String stuName,String teleNum,String email){
