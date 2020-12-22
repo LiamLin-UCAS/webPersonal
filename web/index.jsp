@@ -31,15 +31,9 @@
             <button onclick="window.location.href='register.jsp'">创建新账号</button>
         </div>
             <!--  注册按钮    -->
-
     </div>
-
-
-
-
-
 </article>
 <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
-<script src="canvas.js"></script>
+<script src="js/canvas.js"></script>
 </body>
 </html>

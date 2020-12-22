@@ -4,19 +4,29 @@ html{
 body{
     margin: 0;
     height: 100%;
+    background-image: url("background.jpg");
 }
 article{
     height: 100%;
 }
 article header{
     height: 15%;
-    background-color: #466BAF;
+    background-color: rgba(204,204,255,0.8);
 }
 article header *{
     margin: 0;
 }
 article header h1{
     text-align: center;
+    font-size: 2.25em;
+    color: rgb(159,12,19);
+    padding-top: 20px;
+}
+article header div{
+    float: left;
+}
+article header div p{
+    color: chocolate;
 }
 article article{
     height: 85%;
@@ -25,17 +35,87 @@ article article{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #CC865E;
 }
-#navigator{
-    width: 12%;
+.naviContent{
+    width: 14%;
+    height: 100%;
+    background-color: rgba(134, 195, 245, 0.85);
 }
-#navigator *{
-    margin: 0;
+.navigator{
+
+    font-size: 0.75em;
+}
+.navigator *{
+    width: 93%;
+    font-size: 2em;
     padding: 20px;
-    border: 2px solid black;
-    border-bottom: 0;
+    border-radius: 10px;
+    margin: 0 10px 10px 5px;
+    text-align: center;
+}
+.navigator button:focus{
+    background-color: white;
+    color: rgb(255,162,93);
+}
+.navigator button:hover{
+    background-color: white;
+    color: rgb(255,162,93);
+}
+.headNavi{
+    margin-top: 5px;
+    border: 2px solid rgb(255,162,93);
+    color: white;
+    background-color: rgb(255,162,93);
 }
 #content{
-    width: 88%;
+    width: 86%;
+    background-color: rgba(213,213,213,0.9);
+}
+.subNavi0{
+    display: none;
+    margin-top: 0;
+    padding: 2px;
+    border: solid #466BAF;
+    background-color: #466BAF;
+    color: white;
+}
+.subNavi0:hover{
+    background-color: white;
+    color: #466BAF;
+}
+.subNavi0:focus{
+    background-color: white;
+    color: #466BAF;
+}
+.subNavi1{
+    display: none;
+    margin-top: 0;
+    padding: 2px;
+    border: solid #466BAF;
+    background-color: #466BAF;
+    color: white;
+}
+.subNavi1:hover{
+    background-color: white;
+    color: #466BAF;
+}
+.subNavi1:focus{
+    background-color: white;
+    color: #466BAF;
+}
+.subNavi2{
+    display: none;
+    margin-top: 0;
+    padding: 2px;
+    border: solid #466BAF;
+    background-color: #466BAF;
+    color: white;
+}
+.subNavi2:hover{
+    background-color: white;
+    color: #466BAF;
+}
+.subNavi2:focus{
+    background-color: white;
+    color: #466BAF;
 }

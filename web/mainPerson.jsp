@@ -11,24 +11,41 @@
     <meta charset="UTF-8">
     <title>个人信息</title>
     <link rel="stylesheet" href="main.css">
-    <script src="jquery.js"></script>
+    <script src="js/jquery.js"></script>
 </head>
 <body>
 <article>
     <header>
-        <h1>山东大学软件学院<br>学生信息管理系统</h1>
-        <p >你好！<%=request.getAttribute("stuName")%></p>
+        <div>
+            <img src="logo.png" style="width: 60%;"/>
+            <p>你好！ <i><%=request.getAttribute("stuName")%></i>  <%=request.getAttribute("stuID")%></p>
+        </div>
+        <h1>学生信息管理系统</h1>
     </header>
     <article id="main">
-        <div id="navigator">
-            <div>func1</div>
-            <div>func2</div>
-            <div style="border-bottom: 2px solid black">func3</div>
+        <div class="naviContent">
+            <div class="navigator">
+                <button style="margin-top: 5px;" onclick="display(0)" class="headNavi">个人信息</button>
+                <button class="subNavi0">学籍信息</button>
+                <button class="subNavi0">修改信息</button>
+            </div>
+            <div class="navigator">
+                <button style="margin-top: 5px;" onclick="display(1)" class="headNavi">选课退课</button>
+                <button class="subNavi1">选课</button>
+                <button class="subNavi1">退课</button>
+            </div>
+            <div class="navigator">
+                <button style="margin-top: 5px;" onclick="display(2)" class="headNavi">综合素质</button>
+                <button class="subNavi2">成绩查询</button>
+                <button class="subNavi2">社会工作</button>
+            </div>
         </div>
+
         <div id="content">
             <p>content</p>
         </div>
     </article>
 </article>
+<script src="js/mainPerson.js"></script>
 </body>
 </html>

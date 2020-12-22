@@ -1,5 +1,5 @@
 body{
-    background-image: url("background.png");
+    background-image: url("background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -52,12 +52,12 @@ body{
     border: 1px solid blue;
 }
 .content .panel .login button {
-    background-color: #CC865E;/*按钮的背景颜色*/
+    background-color: #FFA100;/*按钮的背景颜色*/
     width: 260px;/*按钮的宽度*/
 }
 .content .panel .login button:hover {
     background-color: white;/*按钮选中后背景颜色为白色*/
-    color:  #CC865E;/*按钮选中后字体颜色为褐色*/
+    color:  #FFA100;/*按钮选中后字体颜色为褐色*/
     border: 2px solid #CC865E;/*按钮选中后边框颜色为褐色*/
 }
 
