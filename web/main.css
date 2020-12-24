@@ -140,3 +140,21 @@ article article{
     background-color: white;
     color: #466BAF;
 }
+#contentButton{
+    width: 150px;
+    cursor: pointer;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: solid 1px #466BAF;
+    background-color: #466BAF;
+    color: white;
+}
+#contentButton:hover{
+    color: #466BAF;
+    background-color: white;
+}
+#contentButton:focus{
+    color: #466BAF;
+    background-color: white;
+}

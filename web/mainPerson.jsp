@@ -29,10 +29,11 @@
                 <button style="margin-top: 5px;" onclick="display(0)" class="headNavi">个人信息</button>
                 <button class="subNavi0" onclick="displayInfo()">学籍信息</button>
                 <button class="subNavi0" onclick="displayInfoAjax()">修改信息</button>
+                <button class="subNavi0" id="changePassword" onclick="displayChangePassword()">修改密码</button>
             </div>
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(1)" class="headNavi">选课退课</button>
-                <button class="subNavi1">选课</button>
+                <button class="subNavi1" onclick="selectCourse()">选课</button>
                 <button class="subNavi1">退课</button>
             </div>
             <div class="navigator">
@@ -46,5 +47,7 @@
     </article>
 </article>
 <script src="js/mainPerson.js"></script>
+<script src="js/canvas-nest.min.js"></script>　
+<script src="js/canvas.js"></script>
 </body>
 </html>
