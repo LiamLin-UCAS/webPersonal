@@ -195,6 +195,147 @@ public class JDBCdemo {
             close(rs,stmt,con);
         }
     }
+    public static boolean checkCourse(String studentID,String courseID){
+        if(courseID==null)
+            return true;
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql="select * from stucourse where stuID='"+studentID+"' and courseID='"+courseID+"';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            rs=stmt.executeQuery(sql);
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(rs,stmt,con);
+        }
+        return false;
+    }
+    public static boolean checkCourseForDisSelect(String studentID,String courseID){
+        if(courseID==null)
+            return false;
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql="select * from stucourse where stuID='"+studentID+"' and courseID='"+courseID+"';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            rs=stmt.executeQuery(sql);
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(rs,stmt,con);
+        }
+        return false;
+    }
+    public static void selectCourse(String studentID,String courseID){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql1;
+        String sql2;
+        int temp=0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            if(courseID==null)
+                return;
+            sql1="insert into stucourse(stuID,courseID) values ('"+studentID+"','"+courseID+"')";
+            stmt.execute(sql1);
+            sql2="select * from selectcourse where courseID='"+courseID+"';";
+            rs=stmt.executeQuery(sql2);
+            if(rs.next())
+                temp=rs.getInt("amount");
+            sql2="update selectcourse set amount='"+(temp-1)+"' where courseID='"+courseID+"';";
+            stmt.execute(sql2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(rs,stmt,con);
+        }
+    }
+    public static void disSelectCourse(String studentID,String courseID){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql1;
+        String sql2;
+        int temp=0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            if(courseID==null)
+                return;
+            sql1="delete from stucourse where stuID='"+studentID+"' and courseID='"+courseID+"';";
+            stmt.execute(sql1);
+            sql2="select * from selectcourse where courseID='"+courseID+"';";
+            rs=stmt.executeQuery(sql2);
+            if(rs.next())
+                temp=rs.getInt("amount");
+            sql2="update selectcourse set amount='"+(temp+1)+"' where courseID='"+courseID+"';";
+            stmt.execute(sql2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(rs,stmt,con);
+        }
+    }
+    public static void displaySelectCourse(String studentID,String[][] course){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql1="select * from stucourse where stuID='"+studentID+"';";
+        String sql2="";
+        String[][] temp=new String[5][2];
+        for(int i=0;i<5;i++){
+            for(int j=0;j<2;j++){
+                temp[i][j]= "";
+            }
+        }
+        int count=0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            rs=stmt.executeQuery(sql1);
+            while(rs.next()){
+                for(int j=0;j<2;j++){
+                    temp[count][j]=rs.getString(j+2);
+                }
+                count++;
+            }
+            for(int i=0;i<5;i++){
+                if(temp[i][1]==null)
+                    continue;
+                else{
+                    sql2="select * from selectCourse where courseID='"+temp[i][1]+"';";
+                    rs=stmt.executeQuery(sql2);
+                    if(rs.next()){
+                        for(int j=0;j<4;j++){
+                            course[i][j]=rs.getString(j+1);
+                        }
+                    }
+                }
+            }
+            close(rs,stmt,con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void close(ResultSet rs,Statement stmt,Connection con){
         try{
             if(rs!=null){

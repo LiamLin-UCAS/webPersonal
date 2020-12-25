@@ -158,3 +158,7 @@ article article{
     color: #466BAF;
     background-color: white;
 }
+#table *{
+    font-size: 24px;
+    border: solid 2px black;
+}

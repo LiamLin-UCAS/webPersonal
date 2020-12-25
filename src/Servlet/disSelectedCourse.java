@@ -1,7 +1,5 @@
 package Servlet;
 
-
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import javax.servlet.ServletException;
@@ -12,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/selectCourse")
-public class selectCourse extends HttpServlet {
+@WebServlet("/disSelectCourse")
+public class disSelectedCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
@@ -26,8 +24,8 @@ public class selectCourse extends HttpServlet {
             courses[i]= temp;
         }
         for(int i=0;i<5;i++){
-            if(!JDBCdemo.checkCourse(stuID,courses[i])){
-                JDBCdemo.selectCourse(stuID,courses[i]);
+            if(JDBCdemo.checkCourseForDisSelect(stuID,courses[i])){
+                JDBCdemo.disSelectCourse(stuID,courses[i]);
                 count++;
             }
         }

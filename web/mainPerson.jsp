@@ -33,8 +33,8 @@
             </div>
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(1)" class="headNavi">选课退课</button>
-                <button class="subNavi1" onclick="selectCourse()">选课</button>
-                <button class="subNavi1">退课</button>
+                <button class="subNavi1" onclick="displayCourse()">选课</button>
+                <button class="subNavi1" onclick="displaySelectedCourse()">退课</button>
             </div>
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(2)" class="headNavi">综合素质</button>

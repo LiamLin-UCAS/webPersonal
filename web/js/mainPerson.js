@@ -2,6 +2,7 @@ let count=new Array();
 count[0]=0;
 count[1]=0;
 count[2]=0;
+let selectedCourse=0;
 function display(num){
     count[num]++;
     let selector=".navigator .subNavi"+num;
@@ -171,26 +172,118 @@ function changePassword(){
     }
 }
 
-function selectCourse(){
+function displayCourse(){
     $.ajax({
-        url:"selectCourse",
+        url:"displayCourse",
         type:"post",
         success:function (e){
-            console.log(e);
             let content=document.getElementById("content");
             content.innerHTML="<table id='table'>" +
                 "<tr>" +
-                "<td>课程号</td><td>课程名</td><td>老师</td><td>上课时间</td><td>课余量</td><td></td>" +
+                "<td>课程号</td><td>课程名</td><td>老师</td><td>上课时间</td><td>课余量</td><td>选课</td>" +
                 "</tr>";
             let table=document.getElementById("table");
             for(let i=0;i<5;i++){
-                table.innerHTML+="<tr><td>" + e.course[i][0] + "</td><td>" + e.course[i][1] + "</td><td>" + e.course[i][2] + "</td><td>" + e.course[i][3] + "</td><td>" + e.course[i][4] + "</td><td><input type='checkbox' id='select"+i+"'></td></tr>"
-                // for(let j=0;j<5;j++){
-                //     table.innerHTML+="<td>"+e.course[i][j]+"</td>";
-                // }
-                // table.innerHTML+="<td><input type='checkbox' id='select"+i+"'></td></tr>";
+                table.innerHTML+="<tr><td id='courseID"+i+"'>" + e.course[i][0] + "</td><td>" + e.course[i][1] + "</td><td>" + e.course[i][2] + "</td><td>" + e.course[i][3] + "</td><td>" + e.course[i][4] + "</td><td><input type='checkbox' name='selected'></td></tr>"
             }
-            content.innerHTML+="</table>";
+            content.innerHTML+="</table><button onclick='selectCourse()' id='contentButton' style='margin-top: 20px;'>确认选课</button>";
+        }
+    });
+}
+
+function selectCourse(){
+    let stuID=document.getElementById("stuID").value;
+    let courses=new Array(5);
+    for(let i=0;i<5;i++){
+        if(document.getElementsByName("selected")[i].checked==true){
+            courses[i]=document.getElementById("courseID"+i).innerHTML;
+        }
+    }
+    $.ajax({
+        url:"selectCourse",
+        type:"post",
+        data:{
+            stuID:stuID,
+            courses0:courses[0],
+            courses1:courses[1],
+            courses2:courses[2],
+            courses3:courses[3],
+            courses4:courses[4]
+        },
+        success:function (e){
+            alert("成功选"+e.success+"门课程");
+            displayCourse();
+        }
+    });
+}
+
+function displaySelectedCourse(){
+    let stuID=document.getElementById("stuID").value;
+    $.ajax({
+        url:"displaySelectCourse",
+        type:"post",
+        data:{
+            stuID:stuID
+        },
+        success:function (e){
+            if(e.course[0][0]==""){
+                document.getElementById("content").innerHTML="未选择任何课程！";
+            }
+            else{
+                for(let i=0;i<5;i++){
+                    if(e.course[i][0]==""){
+                        continue;
+                    }
+                    else{
+                        let content = document.getElementById("content");
+                        content.innerHTML="<table id='table'>" +
+                            "<tr>" +
+                            "<td>课程号</td><td>课程名</td><td>老师</td><td>上课时间</td><td>退课</td>" +
+                            "</tr>";
+                        let table=document.getElementById("table");
+                        for(let j=0;j<length(e.course);j++){
+                            table.innerHTML+="<tr><td id='courseID"+j+"'>" + e.course[j][0] + "</td><td>" + e.course[j][1] + "</td><td>" + e.course[j][2] + "</td><td>" + e.course[j][3] + "</td><td><input type='checkbox' name='selected'></td></tr>"
+                        }
+                        content.innerHTML+="</table><button onclick='disSelectCourse()' id='contentButton' style='margin-top: 20px;'>确认退课</button>";
+                    }
+                }
+                selectedCourse=length(e.course);
+            }
+        }
+    });
+}
+
+function length(data){
+    let temp=0;
+    for(let i=0;i<data.length;i++){
+        if(data[i][0]!="")
+            temp++;
+    }
+    return temp;
+}
+
+function disSelectCourse(){
+    let stuID=document.getElementById("stuID").value;
+    let courses=new Array(5);
+    for(let i=0;i<selectedCourse;i++){
+        if(document.getElementsByName("selected")[i].checked==true){
+            courses[i]=document.getElementById("courseID"+i).innerHTML;
+        }
+    }
+    $.ajax({
+        url:"disSelectCourse",
+        type:"post",
+        data:{
+            stuID:stuID,
+            courses0:courses[0],
+            courses1:courses[1],
+            courses2:courses[2],
+            courses3:courses[3],
+            courses4:courses[4]
+        },
+        success:function (e){
+            alert("成功退"+e.success+"门课程");
+            displaySelectedCourse();
         }
     });
 }
