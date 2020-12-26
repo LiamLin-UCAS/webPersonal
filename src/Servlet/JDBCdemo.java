@@ -336,6 +336,52 @@ public class JDBCdemo {
             e.printStackTrace();
         }
     }
+    public static void displayScore(String studentID,String[][] course){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql="select * from stuScore where stuID='"+studentID+"';";
+        int count=0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            rs=stmt.executeQuery(sql);
+            while(rs.next()){
+                for(int i=0;i<3;i++){
+                    course[count][i]=rs.getString(i+3);
+                }
+                count++;
+            }
+            close(rs,stmt,con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void displaySocialWork(String studentID,String[][] data){
+        Connection con=null;
+        Statement stmt=null;
+        ResultSet rs=null;
+        String url="jdbc:mysql://localhost:3306/studentdata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
+        String sql="select * from stuSocialWork where stuID='"+studentID+"';";
+        int count=0;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection(url,"root","123456");
+            stmt=con.createStatement();
+            rs=stmt.executeQuery(sql);
+            while(rs.next()){
+                for(int i=0;i<2;i++){
+                    data[count][i]=rs.getString(i+3);
+                }
+                count++;
+            }
+            close(rs,stmt,con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void close(ResultSet rs,Statement stmt,Connection con){
         try{
             if(rs!=null){

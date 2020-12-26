@@ -38,12 +38,14 @@
             </div>
             <div class="navigator">
                 <button style="margin-top: 5px;" onclick="display(2)" class="headNavi">综合素质</button>
-                <button class="subNavi2">成绩查询</button>
-                <button class="subNavi2">社会工作</button>
+                <button class="subNavi2" onclick="displayScore()">成绩查询</button>
+                <button class="subNavi2" onclick="displaySocialWork()">社会工作</button>
             </div>
         </div>
 
-        <div id="content" align="center"></div>
+        <div id="content" align="center">
+            <h2 style="font-size: 4em;color: rgb(159,12,19)">欢迎您，山大软院人！</h2>
+        </div>
     </article>
 </article>
 <script src="js/mainPerson.js"></script>

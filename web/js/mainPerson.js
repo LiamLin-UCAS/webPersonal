@@ -24,11 +24,6 @@ function display(num){
         }
     }
 }
-// function show(num) {
-//     num=".navigator .subNavi"+num;
-//     $(num).slideDown();
-// }
-
 function displayInfo(){
     let stuID=document.getElementById("stuID").value;
     $.ajax({
@@ -56,7 +51,6 @@ function displayInfo(){
         }
     });
 }
-
 function displayInfoAjax(){
     let stuID=document.getElementById("stuID").value;
     $.ajax({
@@ -86,7 +80,6 @@ function displayInfoAjax(){
         }
     });
 }
-
 function changeInfo(){
     let stuID=document.getElementById("stuID").value;
     let tel=document.getElementById("tel").value;
@@ -126,7 +119,7 @@ function displayChangePassword(){
         },
         success:function (e){
             let content=document.getElementById("content");
-            content.innerHTML="<table>" +
+            content.innerHTML="<table style='margin-top: 30px;'>" +
                 "<tr>" +
                 "<td>原密码：</td>" +
                 "<td><input disabled type='password' value='"+e.password+"'></td>" +
@@ -144,7 +137,6 @@ function displayChangePassword(){
         }
     })
 }
-
 function changePassword(){
     let stuID=document.getElementById("stuID").value;
     let oldPassword=document.getElementById("oldPassword").value;
@@ -171,14 +163,13 @@ function changePassword(){
         });
     }
 }
-
 function displayCourse(){
     $.ajax({
         url:"displayCourse",
         type:"post",
         success:function (e){
             let content=document.getElementById("content");
-            content.innerHTML="<table id='table'>" +
+            content.innerHTML="<table id='table' style='margin-top: 30px;'>" +
                 "<tr>" +
                 "<td>课程号</td><td>课程名</td><td>老师</td><td>上课时间</td><td>课余量</td><td>选课</td>" +
                 "</tr>";
@@ -190,7 +181,6 @@ function displayCourse(){
         }
     });
 }
-
 function selectCourse(){
     let stuID=document.getElementById("stuID").value;
     let courses=new Array(5);
@@ -216,7 +206,6 @@ function selectCourse(){
         }
     });
 }
-
 function displaySelectedCourse(){
     let stuID=document.getElementById("stuID").value;
     $.ajax({
@@ -227,7 +216,7 @@ function displaySelectedCourse(){
         },
         success:function (e){
             if(e.course[0][0]==""){
-                document.getElementById("content").innerHTML="未选择任何课程！";
+                document.getElementById("content").innerHTML="<p style='margin-top: 30px;font-size: 2em;color: rgb(159,12,19)'>未选择任何课程！</p>";
             }
             else{
                 for(let i=0;i<5;i++){
@@ -236,7 +225,7 @@ function displaySelectedCourse(){
                     }
                     else{
                         let content = document.getElementById("content");
-                        content.innerHTML="<table id='table'>" +
+                        content.innerHTML="<table id='table' style='margin-top: 30px;'>" +
                             "<tr>" +
                             "<td>课程号</td><td>课程名</td><td>老师</td><td>上课时间</td><td>退课</td>" +
                             "</tr>";
@@ -252,7 +241,6 @@ function displaySelectedCourse(){
         }
     });
 }
-
 function length(data){
     let temp=0;
     for(let i=0;i<data.length;i++){
@@ -261,7 +249,6 @@ function length(data){
     }
     return temp;
 }
-
 function disSelectCourse(){
     let stuID=document.getElementById("stuID").value;
     let courses=new Array(5);
@@ -286,4 +273,48 @@ function disSelectCourse(){
             displaySelectedCourse();
         }
     });
+}
+function displayScore(){
+    let stuID=document.getElementById("stuID").value;
+    $.ajax({
+        url:"displayScore",
+        type:"post",
+        data:{
+            stuID:stuID
+        },
+        success:function (e){
+            let content = document.getElementById("content");
+            content.innerHTML="<table id='table' style='margin-top: 30px;'>" +
+                "<tr>" +
+                "<td>课程名</td><td>分数</td><td>学分</td>" +
+                "</tr>";
+            let table=document.getElementById("table");
+            for(let j=0;j<6;j++){
+                table.innerHTML+="<tr><td>" + e.score[j][0] + "</td><td>" + e.score[j][1] + "</td><td>" + e.score[j][2] + "</td></tr>"
+            }
+            console.log(e);
+        }
+    })
+}
+function displaySocialWork(){
+    let stuID=document.getElementById("stuID").value;
+    $.ajax({
+        url:"displaySocialWork",
+        type:"post",
+        data:{
+            stuID:stuID
+        },
+        success:function (e){
+            let content = document.getElementById("content");
+            content.innerHTML="<table id='table' style='margin-top: 30px;'>" +
+                "<tr>" +
+                "<td>类型</td><td>内容</td>" +
+                "</tr>";
+            let table=document.getElementById("table");
+            for(let j=0;j<2;j++){
+                table.innerHTML+="<tr><td>" + e.data[j][0] + "</td><td>" + e.data[j][1] + "</td></tr>"
+            }
+            console.log(e);
+        }
+    })
 }
